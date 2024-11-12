@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrando datos json</title>
+</head>
+
+<body>
+    <!-- <script type="module" src="main.js">  </script> -->
+    <script type="module">
+        import { arrArticulos } from "./modulos/articulos.mjs";
+
+        function formateaArtículos() {
+            console.log('Mostrando articulos..')
+            arrArticulos.forEach((articulo) => {
+                console.log(articulo);
+            });
+        }
+
+
+        formateaArtículos();
+    </script>
+</body>
+
+</html>

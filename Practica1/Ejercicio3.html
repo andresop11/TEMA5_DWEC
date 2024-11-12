@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrando datos JSON</title>
+</head>
+
+<body>
+    <h1>Lista de Artículos</h1>
+    <div id="listaArticulos"></div>
+
+    <script type="module">
+        import { arrArticulos } from "./modulos/articulos.mjs";
+
+        function aplicarEstilos() {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = "./modulos/estilos.css"; // Ruta al archivo CSS
+            document.head.appendChild(link); // Agrega el <link> al <head>
+        }
+
+
+        function mostrarArticulos() {
+            const listaArticulos = document.getElementById("listaArticulos");
+
+            // Limpiar el contenido previo
+            listaArticulos.innerHTML = '';
+
+            // Crear elementos HTML para cada artículo
+            arrArticulos.forEach((articulo) => {
+                // Crear un contenedor para cada artículo
+                const contenedor = document.createElement("div");
+                contenedor.className = "articulo";
+
+                // Crear el título del artículo
+                const titulo = document.createElement("div");
+                titulo.className = "titulo";
+                titulo.textContent = `Código: ${articulo.codigo} - ${articulo.nombre}`;
+                contenedor.appendChild(titulo);
+
+                // Crear el precio del artículo
+                const precio = document.createElement("div");
+                precio.className = "precio";
+                precio.textContent = `Precio: $${articulo.precio}`;
+                contenedor.appendChild(precio);
+
+                // Crear la descripción del artículo
+                const descripcion = document.createElement("div");
+                descripcion.textContent = `Descripción: ${articulo.descripcion}`;
+                contenedor.appendChild(descripcion);
+
+                // Agregar el contenedor del artículo a la lista de artículos
+                listaArticulos.appendChild(contenedor);
+            });
+        }
+
+        mostrarArticulos();
+        aplicarEstilos();
+    </script>
+</body>
+
+</html>

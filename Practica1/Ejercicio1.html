@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio DOM</title>
+</head>
+<body>
+    <h1>DOM</h1>
+
+    <p>
+        Primer parrafo con <a href="https://es.wikipedia.org/wiki/HTML">enlace a HTML en Wikipedia</a> y
+        otro a <a href="https://www.google.com">Google</a>
+    </p>
+    
+    <p>
+        Segundo parrado con <a href="https://developer.mozilla.org/es/">enlace a MDN</a> y otro
+        <a href="https://www.google.com">enlace a Google</a>
+    </p>
+    
+    <p>
+        Tercer parrafo con <a href="https://www.example.com">enlace a Example</a>.
+    </p>
+
+    <div id="resultados">
+        <h2>Resultados:</h2>
+        <ul>
+            <li id="numEnlaces">Número de enlaces en la página:</li>
+            <li id="penultimoEnlace">Dirección a la que enlaza el penúltimo enlace:</li>
+            <li id="enlacesGoogle">Número de enlaces que enlazan a Google:</li>
+            <li id="enlacesTercerParrafo">Número de enlaces en el tercer párrafo:</li>
+        </ul>
+    </div>
+
+    <script>
+        // Obtener todos los enlaces de la página
+        const enlaces = document.querySelectorAll("a");
+        // Mostrar el número de enlaces de la página
+        document.getElementById("numEnlaces").innerText += " " + enlaces.length;
+
+        // Mostrar la dirección a la que enlaza el penúltimo enlace
+        if (enlaces.length >= 2) {
+            const penultimoEnlace = enlaces[enlaces.length - 2].href;
+            document.getElementById("penultimoEnlace").innerText += " " + penultimoEnlace;
+        } else {
+            document.getElementById("penultimoEnlace").innerText += " No hay suficientes enlaces.";
+        }
+
+        // Contar cuántos enlaces enlazan a Google
+        let enlacesGoogle = 0;
+        enlaces.forEach((enlace) => {
+            if (enlace.href.includes("google.com")) {
+                enlacesGoogle++;
+            }
+        });
+        document.getElementById("enlacesGoogle").innerText += " " + enlacesGoogle;
+
+        // Contar los enlaces en el tercer párrafo
+        const tercerParrafo = document.querySelectorAll("p")[2];
+        const enlacesTercerParrafo = tercerParrafo.querySelectorAll("a").length;
+        document.getElementById("enlacesTercerParrafo").innerText += " " + enlacesTercerParrafo;
+    </script>
+</body>
+</html>

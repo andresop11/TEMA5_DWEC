@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generación de Tabla con el DOM</title>
+</head>
+<body>
+    <h1>Información de Usuarios</h1>
+    <div id="tablaUsuarios"></div>
+
+    <script>
+        // Array de objetos literales
+        const usuarios = [
+            { codigo: 1, dni: "4455544X", Nombre: "Juan López López", edad: 18 },
+            { codigo: 2, dni: "7778888X", Nombre: "Luis Mateo López", edad: 25 },
+            { codigo: 3, dni: "6654545M", Nombre: "Pedro Guitierrez López", edad: 41 },
+            { codigo: 4, dni: "9998897X", Nombre: "María Gutierrez López", edad: 32 }
+        ];
+
+        // Seleccionar el contenedor donde se insertará la tabla
+        const tablaUsuarios = document.getElementById("tablaUsuarios");
+
+        // Crear la tabla
+        const tabla = document.createElement("table");
+
+        // Crear la fila de encabezados
+        const encabezado = document.createElement("tr");
+        const titulos = ["Código", "DNI", "Nombre", "Edad"];
+        titulos.forEach((titulo) => {
+            const th = document.createElement("th");
+            th.textContent = titulo;
+            encabezado.appendChild(th);
+        });
+        tabla.appendChild(encabezado);
+
+        // Agregar las filas con los datos de cada usuario
+        usuarios.forEach((usuario) => {
+            const fila = document.createElement("tr");
+
+            Object.values(usuario).forEach((valor) => {
+                const celda = document.createElement("td");
+                celda.textContent = valor;
+                fila.appendChild(celda);
+            });
+
+            tabla.appendChild(fila);
+        });
+
+        // Añadir la tabla generada al contenedor
+        tablaUsuarios.appendChild(tabla);
+    </script>
+</body>
+</html>
