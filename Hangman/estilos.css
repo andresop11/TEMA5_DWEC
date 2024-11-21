@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #d4f1f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 100px;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #555;
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+#palabra {
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+#alfabeto button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 1.2em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#alfabeto button:disabled {
+    background-color: #d6d6d6;
+    color: #777;
+    cursor: not-allowed;
+}
+
+#alfabeto button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+#vidas, #mensaje {
+    font-size: 1.2em;
+    margin-top: 15px;
+}

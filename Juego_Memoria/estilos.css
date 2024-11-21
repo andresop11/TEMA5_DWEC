@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #87ceeb;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+h2 {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#timer {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+#tablero {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 cartas por fila */
+    gap: 15px;
+    justify-content: center;
+}
+
+.carta {
+    width: 80px;
+    height: 100px;
+    background-color: #eee;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.carta:hover {
+    transform: scale(1.1);
+}
+
+.carta.revelada {
+    background-color: #4caf50;
+    color: #fff;
+    cursor: default;
+}

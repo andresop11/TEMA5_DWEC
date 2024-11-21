@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .ocultar{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <p id="texto-parcial">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit... 
+    </p>
+
+    <a href="#" id="ver-completo" onclick="mostrarTextoCompleto()">Ver Artículo Completo</a>
+
+    <p id="texto-completo" class="ocultar">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde possimus quos quaerat consectetur? Ullam commodi, fugiat maiores nobis, nulla, aut nisi sunt quam ratione labore vel consequuntur placeat provident corrupti.
+    </p>
+
+
+    <script>
+
+        function mostrarTextoCompleto() {
+            document.getElementById("texto-completo").classList.remove("ocultar"); // Muestra el texto completo
+            document.getElementById("ver-completo").style.display = "none"; // Oculta el enlace
+            document.getElementById("texto-parcial").style.display = "none"; 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Subir Archivos</h1>
+
+    <form id="formulario">
+      <div id="contenedor-archivos">
+        <input type="file" name="archivos[]" multiple>
+      </div>
+      <button type="button" id="agregar">Adjuntar otro fichero</button>
+      <button type="submit" id="enviar">Enviar</button>
+    </form>
+
+      <script>
+        // Cuando el usuario hace clic en "Adjuntar otro fichero"
+        document.getElementById("agregar").addEventListener("click", function() {
+        // Crear un nuevo input de tipo 'file'
+        let nuevoInput = document.createElement("input");
+        nuevoInput.type = "file";
+        nuevoInput.name = "archivos[]";  // Los archivos tendrán el mismo nombre en el formulario
+        nuevoInput.multiple = true;  // Permitir seleccionar varios archivos
+
+        // Añadir el nuevo input al contenedor de archivos
+        document.getElementById("contenedor-archivos").appendChild(nuevoInput);
+        });
+
+        // Cuando el formulario se envía
+        document.getElementById("formulario").addEventListener("submit", function(event) {
+        event.preventDefault();  // Evitar que se recargue la página
+
+        const formData = new FormData(this);  // Recoger los archivos seleccionados
+
+        // Aquí es donde puedes enviar los archivos al servidor
+        // (simulamos la subida con un log en la consola)
+        console.log("Archivos enviados:", formData);
+        });
+
+      </script>
+</body>
+</html>
