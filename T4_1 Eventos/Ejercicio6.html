@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Colores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        img {
+            width: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 60%;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        td:hover {
+            cursor: pointer;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 20px auto;
+            max-width: 600px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Título de la página como imagen -->
+    <img 
+        id="titulo"
+        src="img/paleta_colores.webp" 
+        alt="Título"
+        onmouseover="cambiarTitulo('img/paleta_hover.jpg')" 
+        onmouseout="cambiarTitulo('img/paleta_colores.webp')"
+    >
+
+    <p>
+        Coloca el puntero sobre los valores en hexadecimal para ver el color representado. Al salir del valor, 
+        se mostrará el nombre del color.
+    </p>
+
+    <!-- Tabla de colores -->
+    <table>
+        <tr>
+            <th>Color</th>
+            <th>Código Hexadecimal</th>
+        </tr>
+        <tr>
+            <td>Rojo</td>
+            <td onmouseover="mostrarColor(this, '#FF0000')" onmouseout="mostrarNombre(this, 'Rojo')">#FF0000</td>
+        </tr>
+        <tr>
+            <td>Verde</td>
+            <td onmouseover="mostrarColor(this, '#00FF00')" onmouseout="mostrarNombre(this, 'Verde')">#00FF00</td>
+        </tr>
+        <tr>
+            <td>Azul</td>
+            <td onmouseover="mostrarColor(this, '#0000FF')" onmouseout="mostrarNombre(this, 'Azul')">#0000FF</td>
+        </tr>
+        <tr>
+            <td>Amarillo</td>
+            <td onmouseover="mostrarColor(this, '#FFFF00')" onmouseout="mostrarNombre(this, 'Amarillo')">#FFFF00</td>
+        </tr>
+        <tr>
+            <td>Cian</td>
+            <td onmouseover="mostrarColor(this, '#00FFFF')" onmouseout="mostrarNombre(this, 'Cian')">#00FFFF</td>
+        </tr>
+        <tr>
+            <td>Magenta</td>
+            <td onmouseover="mostrarColor(this, '#FF00FF')" onmouseout="mostrarNombre(this, 'Magenta')">#FF00FF</td>
+        </tr>
+        <tr>
+            <td>Blanco</td>
+            <td onmouseover="mostrarColor(this, '#FFFFFF')" onmouseout="mostrarNombre(this, 'Blanco')">#FFFFFF</td>
+        </tr>
+        <tr>
+            <td>Negro</td>
+            <td onmouseover="mostrarColor(this, '#000000')" onmouseout="mostrarNombre(this, 'Negro')">#000000</td>
+        </tr>
+        <tr>
+            <td>Gris</td>
+            <td onmouseover="mostrarColor(this, '#808080')" onmouseout="mostrarNombre(this, 'Gris')">#808080</td>
+        </tr>
+        <tr>
+            <td>Naranja</td>
+            <td onmouseover="mostrarColor(this, '#FFA500')" onmouseout="mostrarNombre(this, 'Naranja')">#FFA500</td>
+        </tr>
+        <tr>
+            <td>Rosa</td>
+            <td onmouseover="mostrarColor(this, '#FFC0CB')" onmouseout="mostrarNombre(this, 'Rosa')">#FFC0CB</td>
+        </tr>
+        <tr>
+            <td>Púrpura</td>
+            <td onmouseover="mostrarColor(this, '#800080')" onmouseout="mostrarNombre(this, 'Púrpura')">#800080</td>
+        </tr>
+    </table>
+
+    <script>
+        // Función para cambiar la imagen del título al pasar el ratón
+        function cambiarTitulo(imagen) {
+            const titulo = document.getElementById('titulo');
+            titulo.src = imagen;
+        }
+
+        // Función para mostrar el color en el fondo de la celda
+        function mostrarColor(celda, colorHex) {
+            celda.style.backgroundColor = colorHex; // Aplica el color al fondo
+            celda.style.color = 'white'; // Cambia el texto para que sea visible
+        }
+
+        // Función para mostrar el nombre del color al salir del ratón
+        function mostrarNombre(celda, nombreColor) {
+            celda.style.backgroundColor = ''; // Elimina el fondo
+            celda.style.color = ''; // Restaura el color del texto
+            celda.innerHTML = nombreColor; // Muestra el nombre del color
+        }
+    </script>
+</body>
+</html>

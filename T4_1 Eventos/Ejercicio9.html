@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrastrar Imagen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        img {
+            position: absolute;
+            width: 150px;
+            height: auto;
+            cursor: agarrar; /* Muestra un cursor que indica que se puede arrastrar */
+        }
+    </style>
+</head>
+<body>
+    <img src="img/594281.jpg" alt="Arrastra esta imagen" id="imagenArrastrable">
+
+    <script>
+        // Seleccionamos la imagen
+        const imagen = document.getElementById('imagenArrastrable');
+        let arrastrando = false; // Variable para saber si se está arrastrando
+        let desplazamientoX, desplazamientoY; // Variables para almacenar el desplazamiento relativo
+
+        // Evento al hacer clic con el ratón sobre la imagen (inicio del arrastre)
+        imagen.onmousedown = function (evento) {
+            arrastrando = true; // Activamos el modo de arrastre
+            desplazamientoX = evento.clientX - imagen.offsetLeft; // Calcula la posición relativa en X
+            desplazamientoY = evento.clientY - imagen.offsetTop;  // Calcula la posición relativa en Y
+            imagen.style.cursor = 'agarrando'; // Cambia el cursor a "agarrando"
+        };
+
+        // Evento al mover el ratón (durante el arrastre)
+        document.onmousemove = function (evento) {
+            if (arrastrando) {
+                // Calcula la nueva posición de la imagen
+                const x = evento.clientX - desplazamientoX;
+                const y = evento.clientY - desplazamientoY;
+
+                // Actualiza la posición de la imagen
+                imagen.style.left = `${x}px`;
+                imagen.style.top = `${y}px`;
+            }
+        };
+
+        // Evento al soltar el botón del ratón (fin del arrastre)
+        document.onmouseup = function () {
+            arrastrando = false; // Desactivamos el modo de arrastre
+            imagen.style.cursor = 'agarrar'; // Restaura el cursor al estilo inicial
+        };
+    </script>
+</body>
+</html>

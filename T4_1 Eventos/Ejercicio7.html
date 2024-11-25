@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contacto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            width: 48%;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .help-text {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulario de Contacto</h1>
+
+    <form>
+        <!-- Grupo: Nombre -->
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                placeholder="Introduce tu nombre"
+                onfocus="mostrarAyuda('help-name')" 
+                onblur="ocultarAyuda('help-name')"
+            >
+            <p id="help-name" class="help-text">Introduce tu nombre completo.</p>
+        </div>
+
+        <!-- Grupo: Correo -->
+        <div class="form-group">
+            <label for="email">Correo Electrónico:</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="Introduce tu correo"
+                onfocus="mostrarAyuda('help-email')" 
+                onblur="ocultarAyuda('help-email')"
+            >
+            <p id="help-email" class="help-text">Introduce un correo válido (ejemplo@dominio.com).</p>
+        </div>
+
+        <!-- Grupo: Comentarios -->
+        <div class="form-group">
+            <label for="comments">Comentario:</label>
+            <textarea 
+                id="comments" 
+                name="comments" 
+                rows="4" 
+                placeholder="Escribe tu mensaje"
+                onfocus="mostrarAyuda('help-comments')" 
+                onblur="ocultarAyuda('help-comments')"
+            ></textarea>
+            <p id="help-comments" class="help-text">Escribe el mensaje que deseas enviar.</p>
+        </div>
+
+        <!-- Botones -->
+        <div class="button-container">
+            <button 
+                type="submit"
+                onfocus="mostrarAyuda('help-send')" 
+                onblur="ocultarAyuda('help-send')"
+            >Enviar</button>
+            <button 
+                type="reset"
+                onfocus="mostrarAyuda('help-reset')" 
+                onblur="ocultarAyuda('help-reset')"
+            >Resetear</button>
+        </div>
+        <p id="help-send" class="help-text">Presiona para enviar tu mensaje.</p>
+        <p id="help-reset" class="help-text">Presiona para limpiar todos los campos.</p>
+    </form>
+
+    <script>
+        // Función para mostrar la ayuda asociada al campo
+        function mostrarAyuda(id) {
+            const helpText = document.getElementById(id);
+            helpText.style.display = 'block'; // Muestra el texto de ayuda
+        }
+
+        // Función para ocultar la ayuda asociada al campo
+        function ocultarAyuda(id) {
+            const helpText = document.getElementById(id);
+            helpText.style.display = 'none'; // Oculta el texto de ayuda
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrastrar Varias Imágenes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        img {
+            position: absolute;
+            width: 150px;
+            height: auto;
+            cursor: pointer; /* Muestra un cursor que indica que se puede arrastrar */
+        }
+    </style>
+</head>
+<body>
+    <!-- Varias imágenes para arrastrar -->
+    <img src="img/1144071.jpg" alt="Primera">
+    <img src="img/594281.jpg" alt="Segunda">
+    <img src="img/631818.jpg" alt="Tercera">
+    <img src="img/637668.jpg" alt="Cuarta">
+    <img src="img/869197.jpg" alt="Quinta">
+
+    <script>
+        // Variable para rastrear el estado de arrastre
+        let imagenSeleccionada = null; // Imagen actualmente arrastrada
+        let desplazamientoX = 0, desplazamientoY = 0; // Desplazamiento relativo al inicio del arrastre
+
+        // Función para inicializar los eventos en todas las imágenes
+        function habilitarArrastre(imagen) {
+            // Evento al pulsar sobre una imagen
+            imagen.onmousedown = function (evento) {
+                imagenSeleccionada = this; // Almacena la imagen actual
+                desplazamientoX = evento.clientX - this.offsetLeft; // Calcula el desplazamiento en X
+                desplazamientoY = evento.clientY - this.offsetTop;  // Calcula el desplazamiento en Y
+                this.style.cursor = 'agarrando'; // Cambia el cursor
+            };
+        }
+
+        // Evento al mover el ratón (aplica a todo el documento)
+        document.onmousemove = function (evento) {
+            if (imagenSeleccionada) {
+                // Calcula la nueva posición de la imagen seleccionada
+                const x = evento.clientX - desplazamientoX;
+                const y = evento.clientY - desplazamientoY;
+
+                // Actualiza la posición de la imagen
+                imagenSeleccionada.style.left = `${x}px`;
+                imagenSeleccionada.style.top = `${y}px`;
+            }
+        };
+
+        // Evento al soltar el botón del ratón (fin del arrastre)
+        document.onmouseup = function () {
+            if (imagenSeleccionada) {
+                imagenSeleccionada.style.cursor = 'agarrar'; // Restaura el cursor
+                imagenSeleccionada = null; // Resetea la imagen seleccionada
+            }
+        };
+
+        // Selecciona todas las imágenes y les habilita los eventos
+        const imagenes = document.querySelectorAll('img');
+        imagenes.forEach(habilitarArrastre);
+    </script>
+</body>
+</html>

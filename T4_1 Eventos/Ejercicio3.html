@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="iniciarTemporizador()">
+    <h1>Tiempo Transcurrido desde la Carga de la Página</h1>
+    <p id="tiempo">0 segundos</p>
+
+    <script>
+        // Variable para guardar el tiempo en que se cargó la página
+        let tiempoInicio;
+
+        // Función que se ejecuta al cargar la página
+        function iniciarTemporizador() {
+            // Guardamos la hora exacta de la carga de la página
+            tiempoInicio = Date.now();
+
+            // Llamamos a la función actualizar cada segundo
+            setInterval(actualizarTemporizador, 1000);
+        }
+
+        // Función que actualiza el tiempo transcurrido
+        function actualizarTemporizador() {
+            // Calculamos el tiempo actual
+            const tiempoActual = Date.now();
+            // Calculamos la diferencia entre el tiempo actual y el inicio, en segundos
+            const tiempoTranscurrido = Math.floor((tiempoActual - tiempoInicio) / 1000);
+
+            // Actualizamos el contenido del párrafo con el tiempo transcurrido
+            document.getElementById("tiempo").textContent = `${tiempoTranscurrido} segundos`;
+        }
+    </script>
+</body>
+</html>
+</html>

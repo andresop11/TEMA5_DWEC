@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    
+    <p>Mueve el ratón para ver su posición en la pantalla</p>
+    <p id="posicion"></p>
+
+   <script>
+    let screenLog = document.querySelector("#posicion");
+    document.addEventListener("mousemove", event);
+
+    function event(e) {
+    screenLog.innerText = `
+    Screen X/Y: ${e.screenX}, ${e.screenY}`;
+    }
+   </script>
+
+</body>
+</html>

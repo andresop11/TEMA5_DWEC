@@ -1,0 +1,59 @@
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        td {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #ccc;
+        }
+
+        td:hover {
+            cursor: pointer;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body onload="crearCanvas()">
+    <h1>Dibuja con el ratón</h1>
+    <p>Usa <b>Ctrl</b> para pintar en <span style="color:red;">rojo</span> y <b>Shift</b> para pintar en <span style="color:blue;">azul</span>.</p>
+    <table id="canvas"></table>
+
+    <script>
+      
+        // Función que crea el canvas (tabla 100x100)
+        function crearCanvas() {
+            const canvas = document.getElementById('canvas');
+            for (let i = 0; i < 100; i++) {
+                const fila = document.createElement('tr'); // Crea una fila
+                for (let j = 0; j < 100; j++) {
+                    const celda = document.createElement('td'); // Crea una celda
+
+                    // Añade evento onMouseMove a cada celda
+                    celda.onmousemove = (evento) => pintarCelda(evento, celda);
+                    fila.appendChild(celda); // Añade la celda a la fila
+                }
+                canvas.appendChild(fila); // Añade la fila al canvas
+            }
+        }
+
+        // Función que pinta las celdas dependiendo de las teclas presionadas
+        function pintarCelda(evento, celda) {
+            if (evento.ctrlKey) {
+                celda.style.backgroundColor = "red"; // Pintar de rojo si Ctrl está presionado
+            } else if (evento.shiftKey) {
+                celda.style.backgroundColor = "blue"; // Pintar de azul si Shift está presionado
+            }
+        }
+    </script>
